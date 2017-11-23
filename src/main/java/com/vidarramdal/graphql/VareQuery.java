@@ -1,11 +1,10 @@
 package com.vidarramdal.graphql;
 
-import com.coxautodev.graphql.tools.GraphQLResolver;
+import io.leangen.graphql.annotations.GraphQLQuery;
 
-import java.util.Collections;
 import java.util.List;
 
-public class VareQuery implements GraphQLResolver<Void> {
+public class VareQuery {
 
     private final VareRepository vareRepository;
     private final HandlekurvRepository handlekurvRepository;
@@ -15,15 +14,18 @@ public class VareQuery implements GraphQLResolver<Void> {
         this.handlekurvRepository = handlekurvRepository;
     }
 
+    @GraphQLQuery
     public List<Vare> alleVarer() {
         return vareRepository.getAlleVarer();
     }
 
+    @GraphQLQuery
     public List<Handlekurv> alleHandlekurver() {
         return handlekurvRepository.getAlleHandlekurver();
     }
 
+    @GraphQLQuery
     public Handlekurv handlekurv(String id) {
-        return handlekurvRepository.getHandlekurvById(Long.parseLong(id));
+        return handlekurvRepository.getHandlekurvById(Integer.parseInt(id));
     }
 }
