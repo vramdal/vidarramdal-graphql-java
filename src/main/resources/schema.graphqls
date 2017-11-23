@@ -1,0 +1,30 @@
+type Vare {
+    id : ID!
+    navn : String!
+}
+
+type Varelinje {
+    id: ID!
+    antall: Int!
+    vare: Vare!
+}
+
+type Handlekurv {
+    varelinjer: [Varelinje]
+    id: ID!,
+    eier : String!
+}
+
+#type Query {
+#    alleHandlekurver: [Handlekurv]
+#}
+
+type VareQuery {
+    alleVarer: [Vare],
+    alleHandlekurver: [Handlekurv],
+    handlekurv(id: ID!): Handlekurv
+}
+
+schema {
+    query: VareQuery
+}
