@@ -1,13 +1,24 @@
 package com.vidarramdal.graphql;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "handlekurv")
 public class Handlekurv {
 
-    private final List<Varelinje> varelinjer = new ArrayList<>();
-    private final int id;
-    private final String eier;
+    @OneToMany(mappedBy = "handlekurv")
+    private List<Varelinje> varelinjer = new ArrayList<>();
+
+    @Id()
+    @Column(name = "id")
+    private int id;
+    @Column(name = "eier")
+    private String eier;
+
+    public Handlekurv() {
+    }
 
     public Handlekurv(int id, String eier) {
         this.id = id;

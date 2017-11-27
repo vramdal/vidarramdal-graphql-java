@@ -17,8 +17,8 @@ create table handlekurv (
 create table varelinje (
   id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
   antall INTEGER,
-  vareId INTEGER,
-  handlekurvId NUMERIC
+  vare_Id INTEGER,
+  handlekurv_Id NUMERIC
 );
 
 insert into vare (navn) values ('Brunost');
@@ -32,12 +32,12 @@ insert into handlekurv(eier) values ('Frank');
 insert into handlekurv(eier) values ('Bjarne');
 insert into handlekurv(eier) values ('Kåre');
 
-insert into varelinje (vareId, handlekurvId, antall) values (1, 1, 5);
-insert into varelinje (vareId, handlekurvId, antall) values (2, 1, 5);
-insert into varelinje (vareId, handlekurvId, antall) values (2, 2, 5);
-insert into varelinje (vareId, handlekurvId, antall) values (3, 2, 5);
-insert into varelinje (vareId, handlekurvId, antall) values (3, 3, 5);
-insert into varelinje (vareId, handlekurvId, antall) values (4, 3, 5);
-insert into varelinje (vareId, handlekurvId, antall) values (5, 3, 5);
-insert into varelinje (vareId, handlekurvId, antall) values (1, 4, 5);
+insert into varelinje (vare_id, handlekurv_Id, antall) values (1, 1, 5);
+insert into varelinje (vare_id, handlekurv_Id, antall) values (2, 1, 5);
+insert into varelinje (vare_id, handlekurv_Id, antall) values (2, 2, 5);
+insert into varelinje (vare_id, handlekurv_Id, antall) values (3, 2, 5);
+insert into varelinje (vare_id, handlekurv_Id, antall) values (3, 3, 5);
+insert into varelinje (vare_id, handlekurv_Id, antall) values (4, 3, 5);
+insert into varelinje (vare_id, handlekurv_Id, antall) values (5, 3, 5);
+insert into varelinje (vare_id, handlekurv_Id, antall) values (1, 4, 5);
 

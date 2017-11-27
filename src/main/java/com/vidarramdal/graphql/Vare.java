@@ -1,10 +1,23 @@
 package com.vidarramdal.graphql;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Vare")
 public class Vare {
 
-    private final int id;
-    private final String navn;
+    @Id
+    @Column
+    private int id;
 
+    @Column
+    private String navn;
+
+    public Vare() {
+    }
 
     public Vare(int id, String navn) {
         this.id = id;
