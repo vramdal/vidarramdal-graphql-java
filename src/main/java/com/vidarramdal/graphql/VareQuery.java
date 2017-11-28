@@ -1,7 +1,10 @@
 package com.vidarramdal.graphql;
 
+import io.leangen.graphql.annotations.GraphQLArgument;
 import io.leangen.graphql.annotations.GraphQLEnvironment;
 import io.leangen.graphql.annotations.GraphQLQuery;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.OneToMany;
@@ -17,6 +20,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class VareQuery {
+
+    private static final Logger log = LoggerFactory.getLogger(VareQuery.class);
 
     public VareQuery() {
     }
@@ -35,8 +40,10 @@ public class VareQuery {
         return query.getResultList();
     }
 
-    @GraphQLQuery
-    public Handlekurv handlekurv(String id, @GraphQLEnvironment Set<String> wantedFields) {
+    @GraphQLQuery(name = "handlekurv")
+    public Handlekurv handlekurv(@GraphQLArgument(name = "id") String id, @GraphQLEnvironment Set<String> wantedFields) {
+        log.info("Henter handlekurv med id " + id);
+        // Entity Graph - https://www.thoughts-on-java.org/jpa-21-entity-graph-part-1-named-entity/
         try {
             EntityManager em = PersistenceUtil.getEntityManager();
             CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
